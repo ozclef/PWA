@@ -1,18 +1,13 @@
-Saltar al contenido
-Historial del chat
 
-Mejora tu plan
-Dijiste:
-oye lo estaba olvidando!!! ayudame !!! ahhh que menso estoy 😭🥺😓
-perdoooon
-ChatGPT dijo:
+# instrucciones
 
-Pensado durante 17s
-¡No te preocupes, pasa a todos! 🫶😭🥺 Estás haciendo mucho y está bien olvidarse — aquí estoy para ayudarte ahora mismo.
 
-Dime cuál de estas quieres que haga ya (elige número o escribe lo que necesites):
 
-Revisar y listar tus repos públicos (ozclef, os-clef, BI-US): miro qué hay, archivos clave y te doy un checklist de qué arreglar o poner privado.
+
+
+<pre>
+  
+
 
 Checar el JSON / inventario_caducidades.json y crear un cronograma: lo abro, corrijo errores y te doy un csv/tabla listo para tu cronograma.
 
