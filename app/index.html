@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventario PWA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+  /*  🎨 style.css*/
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #fafafa;
+}
+h1 {
+  text-align: center;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+  </style>
+  
+</head>
+<body>
+  <h1>Inventario</h1>
+  <input id="search" type="text" placeholder="Buscar..." />
+  <table id="tabla">
+    <thead>
+      <tr><th>Nombre</th><th>Precio</th><th>Categoría</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="app.js"></script>
+  <script>
+    
+
+/// ⚙️ app.js
+    // 
+    
+async function cargarDatos() {
+  const res = await fetch("data/inventario.json");
+  const datos = await res.json();
+  mostrarTabla(datos);
+
+  document.getElementById("search").addEventListener("input", (e) => {
+    const filtro = e.target.value.toLowerCase();
+    const filtrados = datos.filter(item =>
+      Object.values(item).some(v => String(v).toLowerCase().includes(filtro))
+    );
+    mostrarTabla(filtrados);
+  });
+}
+
+function mostrarTabla(datos) {
+  const tbody = document.querySelector("#tabla tbody");
+  tbody.innerHTML = "";
+  datos.forEach(item => {
+    const fila = `<tr>
+      <td>${item.nombre}</td>
+      <td>${item.precio}</td>
+      <td>${item.categoria}</td>
+    </tr>`;
+    tbody.innerHTML += fila;
+  });
+}
+
+window.addEventListener("load", () => {
+  cargarDatos();
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+});
+
+    
+  </script>
+</body>
+</html>
